@@ -37,6 +37,11 @@ public class SettingAlarm : MonoBehaviour
     public void SettingDateTime()
     {
         dateTime = new DateTime(year, (int)month, day, hour, minute, second);
-        Debug.Log("Setted time = " + new DateTime(year, (int)month, day, hour, minute, second));
+        if (dateTime > DateTime.Now)
+        {
+            AlarmList.alarms.Add(new Alarm(dateTime));
+            AlarmList.alarms.Sort();
+            AlarmList.ShowAlarmList();
+        }
     }
 }

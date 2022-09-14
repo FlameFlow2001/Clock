@@ -22,11 +22,6 @@ public class SetDateCanvas : MonoBehaviour
         daysInMonth = DateTime.DaysInMonth(year, (int)month);
     }
 
-    private void Update()
-    {
-        Debug.Log($"{day}.{month}.{year}  :  Days in month = {daysInMonth}");
-    }
-
     public static void ChangeDaysInMonth()
     {
         daysInMonth = DateTime.DaysInMonth(year, (int)month);

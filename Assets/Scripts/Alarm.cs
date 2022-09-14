@@ -1,8 +1,22 @@
 using UnityEngine;
 using System;
-using System.Collections.Generic;
 
 public class Alarm : MonoBehaviour
 {
-    public static DateTime alarmList;
+    public DateTime dateTime;
+    public Alarm(DateTime alarmDateTime)
+    {
+        dateTime = alarmDateTime;
+    }
+
+    public int CompareTo(Alarm obj)
+    {
+        if (obj == null) return 1;
+
+        Alarm otherAlarm = obj as Alarm; ;
+        if (otherAlarm != null)
+            return dateTime.CompareTo(otherAlarm.dateTime);
+        else
+            throw new ArgumentException("Object is not a Alarm");
+    }
 }
