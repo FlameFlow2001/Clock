@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using TMPro;
 
 public class SettingAlarm : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class SettingAlarm : MonoBehaviour
     public static int minute;
     public static int second;
     public static int daysInMonth;
-    [SerializeField] static string dateTimeString;
-
+    public int alarmDelayTime = 300;
+    [SerializeField] private GameObject settingTimeErrorWindow;
+    [SerializeField] private TextMeshProUGUI settedTimeText;
+    [SerializeField] private TextMeshProUGUI settedDateText;
     private void Awake()
     {
         year = DateTime.Now.Year;
@@ -40,8 +43,24 @@ public class SettingAlarm : MonoBehaviour
         if (dateTime > DateTime.Now)
         {
             AlarmList.alarms.Add(new Alarm(dateTime));
-            AlarmList.alarms.Sort();
             AlarmList.ShowAlarmList();
+            settedTimeText.text = AlarmList.alarms[0].dateTime.TimeOfDay.ToString();
+            settedDateText.text = AlarmList.alarms[0].dateTime.Date.ToString("d");
         }
+        else
+        {
+            Instantiate(settingTimeErrorWindow);
+        }
+    }
+
+    public void DeleteAlarm()
+    {
+        if (AlarmList.alarms.Count > 0)
+            AlarmList.alarms.RemoveAt(0);
+    }
+
+    public void DelayAlarm()
+    {
+        AlarmList.alarms[0].DelayAlarm(alarmDelayTime);
     }
 }

@@ -1,6 +1,5 @@
 using TMPro;
 using System;
-using UnityEngine;
 
 public class DaySnapScroll : SnapScroll
 {
