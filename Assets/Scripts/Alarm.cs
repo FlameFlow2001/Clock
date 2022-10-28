@@ -10,11 +10,6 @@ public class Alarm : MonoBehaviour
     {
         dateTime = alarmDateTime;
     }
-
-    public void Start()
-    {
-        alarmSound = GetComponent<AudioSource>();
-    }
     public void DelayAlarm(int seconds)
     {
         DisableAlarm();
@@ -24,12 +19,12 @@ public class Alarm : MonoBehaviour
     public void EnableAlarm()
     {
         alarmEnabled = true;
-        alarmSound.Play();
+        //alarmSound.Play();
     }
 
     public void DisableAlarm()
     {
         alarmEnabled = false;
-        alarmSound.Stop();
+        //alarmSound.Stop();
     }
 }

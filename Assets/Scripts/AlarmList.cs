@@ -8,7 +8,9 @@ public static class AlarmList
     {
         string debugString = "";
         foreach (Alarm alarm in alarms)
+        {
             debugString += alarm.dateTime + "\n";
+        }
         Debug.Log(debugString);
     }
 }
